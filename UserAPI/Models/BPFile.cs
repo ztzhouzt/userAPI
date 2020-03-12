@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace UserAPI.Models
 {
+    /// <summary>
+    /// BPFile类
+    /// </summary>
     public class BFile
     {
         /// <summary>
