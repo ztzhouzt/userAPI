@@ -12,6 +12,10 @@ namespace UserAPI
 {
     public class Program
     {
+        /// <summary>
+        /// 家里面拉取了
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
