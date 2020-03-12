@@ -13,7 +13,7 @@ namespace UserAPI.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// 用户Id
+        /// 用户Id 
         /// </summary>
         public int AppUserId { get; set; }
 
