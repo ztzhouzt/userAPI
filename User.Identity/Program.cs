@@ -12,6 +12,10 @@ namespace User.Identity
 {
     public class Program
     {
+        /// <summary>
+        /// 启动
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
