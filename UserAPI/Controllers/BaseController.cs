@@ -10,9 +10,10 @@ namespace UserAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController : ControllerBase
+    public class BaseController : Controller
     {
 
+        protected UserIdentity UserIdentity => new UserIdentity { UserId = 1, Name = "zhoutao" };
 
     }
 }
