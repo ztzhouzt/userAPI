@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using UserAPI.Data;
 using UserAPI.Models;
+using UserAPI.Filters;
 
 namespace UserAPI
 {
@@ -31,7 +32,11 @@ namespace UserAPI
             {
                 options.UseMySQL(Configuration.GetConnectionString("MysqlUser"));
             });
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(option =>
+            {
+                option.Filters.Add(typeof(GlobalExceptionFilter));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,9 +64,7 @@ namespace UserAPI
                     userDbContext.Users.Add(new AppUser{ Name = "Crashsol", Title = "经理" });
                     userDbContext.SaveChanges();
                 }
-
             }
-
         }
     }
 }

@@ -85,6 +85,7 @@ namespace UserAPI.Models
         /// </summary>
         public List<UserProperty> Type { get; set; }
 
+      
 
     }
 }
