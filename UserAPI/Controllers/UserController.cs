@@ -16,7 +16,6 @@ namespace UserAPI.Controllers
     [ApiController]
     public class UserController : BaseController
     {
-
         private UserContext _userContext;
         private ILogger<UserController> _logger;
 
@@ -91,6 +90,30 @@ namespace UserAPI.Controllers
             _userContext.SaveChanges();
             return Json(user);
         }
+
+
+        /// <summary>
+        /// 检查或者创建用户(当用户手机号不存在的时候则创建用户)
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns> 
+       [Route("check-or-create")]
+       [HttpPost]
+        public async Task<IActionResult> CheckOrCreate(string phone)
+        {
+            // TBD 做手机号码格式验证
+
+            var user =  _userContext.Users.SingleOrDefault(u => u.Phone == phone);
+            if (user == null)
+            {
+                user = new AppUser { Phone = phone };
+                _userContext.Users.Add(user);
+                await _userContext.SaveChangesAsync();
+            }
+
+            return Ok(user.Id);
+        }
+
 
     }
 }
