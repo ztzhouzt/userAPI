@@ -12,17 +12,15 @@ namespace UserAPI
 {
     public class Program
     {
-        /// <summary>
-        /// 家里面拉取了    444
-        /// </summary>
-        /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseUrls("http://localhost:57998")
+                .UseStartup<Startup>()
+                .Build();
     }
 }

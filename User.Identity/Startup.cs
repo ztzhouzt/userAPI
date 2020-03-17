@@ -41,10 +41,7 @@ namespace User.Identity
             }
 
             app.UseIdentityServer();
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseMvc();
         }
     }
 }

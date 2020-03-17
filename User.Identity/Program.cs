@@ -12,17 +12,28 @@ namespace User.Identity
 {
     public class Program
     {
-        /// <summary>
-        /// 启动222
-        /// </summary>
-        /// <param name="args"></param>
+        ///// <summary>
+        ///// 启动222
+        ///// </summary>
+        ///// <param name="args"></param>
+        //public static void Main(string[] args)
+        //{
+        //    CreateWebHostBuilder(args).Build().Run();
+        //}
+
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseStartup<Startup>();
+
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseUrls("http://localhost:5000")
+                .Build();
     }
 }

@@ -10,7 +10,7 @@ namespace User.Identity.Services
     public class UserService : IUserService
     {
         private HttpClient _httpClient;
-        private readonly string _userServiceUrl = "http://localhost";
+        private readonly string _userServiceUrl = "http://localhost:57998";
 
         public UserService(HttpClient httpClient)
         {
@@ -22,7 +22,7 @@ namespace User.Identity.Services
             var form = new Dictionary<string, string> { { "phone", phone } };
             var content = new FormUrlEncodedContent(form);
             //得到接口的返回内容
-            var response = await _httpClient.PostAsync(_userServiceUrl + "/api/users/check-or-create", content);
+            var response = await _httpClient.PostAsync(_userServiceUrl + "/api/user/check-or-create",content);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
