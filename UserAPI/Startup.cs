@@ -44,6 +44,8 @@ namespace UserAPI
             });
 
 
+            #region 配置Consul
+
             services.Configure<ServiceDisvoveryOptions>(Configuration.GetSection("ServiceDiscovery"));
 
             services.AddSingleton<IConsulClient>(p => new ConsulClient(cfg =>
@@ -55,6 +57,8 @@ namespace UserAPI
                     cfg.Address = new Uri(serviceConfiguration.Consul.HttpEndpoint);
                 }
             }));
+
+            #endregion
 
             services.AddMvc(option =>
             {
@@ -74,6 +78,8 @@ namespace UserAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            #region Consul相关
+
             //启动的时候注册服务
             applicationLifetime.ApplicationStarted.Register(() =>
             {
@@ -85,6 +91,8 @@ namespace UserAPI
             {
                 DeRegisterServer(app, serviceOptions, consul);
             });
+
+            #endregion 
 
             app.UseMvc();
 
