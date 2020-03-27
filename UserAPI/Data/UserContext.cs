@@ -7,7 +7,7 @@ using UserAPI.Models;
 
 namespace UserAPI.Data
 {
-    public class UserContext:DbContext
+    public class UserContext : DbContext
     {
         public UserContext(DbContextOptions<UserContext> options) : base(options)
         {
@@ -44,6 +44,8 @@ namespace UserAPI.Data
         public DbSet<AppUser> Users { get; set; }
 
         public DbSet<UserProperty> UserProperties { get; set; }
+
+        public DbSet<UserTag> UserTags { get; set; }
 
     }
 }

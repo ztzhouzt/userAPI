@@ -10,8 +10,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Resilience;
 using User.Identity.Dtos;
+using User.Identity.Infrastructure;
 using User.Identity.Services;
 
 namespace User.Identity
@@ -36,7 +39,7 @@ namespace User.Identity
                 .AddInMemoryIdentityResources(Config.GetIndentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources());
 
-
+            //Consul相关
             services.Configure<ServiceDiscoveryOptions>(Configuration.GetSection("ServiceDiscovery"));
             services.AddSingleton<IDnsQuery>(p =>
             {
@@ -44,7 +47,25 @@ namespace User.Identity
                 return new LookupClient(serviceConfiguration.Consul.DnsEndpoint.ToIPEndPoint());
             });
 
-            services.AddSingleton(new HttpClient());
+            //===Polly相关 start========
+            //注册全局单例ResilienceClientFactory
+            services.AddSingleton(typeof(ResilienceClientFactory), sp =>
+            {
+                var logger = sp.GetRequiredService<ILogger<ResilienceHttpClient>>();
+                var httpcontextAccesser = sp.GetRequiredService<IHttpContextAccessor>();
+                var retryCount = 5;
+                var exceptionCountAllowedBeforeBreaking = 5;
+                return new ResilienceClientFactory(logger, httpcontextAccesser, retryCount, exceptionCountAllowedBeforeBreaking);
+            });
+
+
+            //注册全局单例IHttpClient
+            services.AddSingleton<IHttpClient>(sp =>
+            {
+                return sp.GetRequiredService<ResilienceClientFactory>().GetResilienceHttpClient();
+            });
+            //===Polly相关 end========
+
             services.AddScoped<IAuthCodeService, TestAuthCodeService>()
                  .AddScoped<IUserService, UserService>();
 

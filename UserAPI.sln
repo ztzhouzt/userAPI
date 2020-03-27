@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.API", "API.Gateway\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{C52AD3D6-0ED8-40A1-9F1D-2BBEF4E444DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resilience", "Resilience\Resilience.csproj", "{FD2E9F7E-83D4-4B9B-8F6A-1C21F7739A0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resilience", "Resilience\Resilience.csproj", "{FD2E9F7E-83D4-4B9B-8F6A-1C21F7739A0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contact.API", "Contact.API\Contact.API.csproj", "{7F24D3BE-5C32-4422-949D-189F09B71E91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{FD2E9F7E-83D4-4B9B-8F6A-1C21F7739A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD2E9F7E-83D4-4B9B-8F6A-1C21F7739A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD2E9F7E-83D4-4B9B-8F6A-1C21F7739A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F24D3BE-5C32-4422-949D-189F09B71E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F24D3BE-5C32-4422-949D-189F09B71E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F24D3BE-5C32-4422-949D-189F09B71E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F24D3BE-5C32-4422-949D-189F09B71E91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
