@@ -27,8 +27,52 @@
       ],
       "UpstreamPathTemplate": "/connect/token",
       "UpstreamHttpMethod": [ "Post" ]
-      
+    },
+    {
+      //========================contact.api相关start========================
+      //上游
+      "DownstreamPathTemplate": "/api/contacts",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4772
+        }
+      ],
+      //下游
+      "UpstreamPathTemplate": "/connects",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      //上游
+      "DownstreamPathTemplate": "/api/contacts/tags",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4772
+        }
+      ],
+      //下游
+      "UpstreamPathTemplate": "/connects/tag",
+      "UpstreamHttpMethod": [ "Put" ]
+    },
+    {
+      //上游
+      "DownstreamPathTemplate": "/api/contacts/apply-requests",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 4772
+        }
+      ],
+      //下游
+      "UpstreamPathTemplate": "/connects/apply-requests",
+      "UpstreamHttpMethod": [ "Get", "Put", "Post" ]
     }
+    //========================contact.api相关end========================
+
   ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost"

@@ -13,7 +13,7 @@ namespace Contact.API.Models
         public int Id { get; set; }
 
         /// <summary>
-        /// 用户id
+        /// 被申请用户id
         /// </summary>
         public int UserId { get; set; }
 
@@ -52,6 +52,9 @@ namespace Contact.API.Models
         /// </summary>
         public DateTime HandledTime { get; set; }
 
-        public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 申请时间
+        /// </summary>
+        public DateTime ApplyTime { get; set; }
     }
 }

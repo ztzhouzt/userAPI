@@ -5,8 +5,21 @@ using System.Threading.Tasks;
 
 namespace Contact.API.Models
 {
+    /// <summary>
+    /// 好友信息
+    /// </summary>
     public class Contact
     {
+
+
+        public Contact()
+        {
+            Tags = new List<string>();
+        }
+
+        /// <summary>
+        /// 用户id
+        /// </summary>
         public int UserId { get; set; }
 
         /// <summary>

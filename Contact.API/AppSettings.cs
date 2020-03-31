@@ -9,5 +9,6 @@ namespace Contact.API
     {
         public string MongoContactConnectionString { get; set; }
 
+        public string MongoContactDatabase { get; set; }
     }
 }

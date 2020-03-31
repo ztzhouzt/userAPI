@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Contact.API.Dtos
 {
+    /// <summary>
+    /// 申请人？？？
+    /// </summary>
     public class BaseUserInfo
     {
         /// <summary>
